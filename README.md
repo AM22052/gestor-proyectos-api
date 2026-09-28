@@ -1,4 +1,4 @@
-# API Gestor de Proyectos
+# API Gestor de Proyectos Simple
 
 API REST desarrollada con **Spring Boot** para gestionar proyectos, tareas y empleados, permitiendo registrar las horas trabajadas en cada tarea y calcular el total de horas por tarea o por proyecto.
 
