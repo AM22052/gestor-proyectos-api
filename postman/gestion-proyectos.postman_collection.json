@@ -1,0 +1,161 @@
+{
+  "info": {
+    "name": "Gestion de Proyectos - Entrega 2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" }
+  ],
+  "item": [
+    {
+      "name": "Proyectos",
+      "item": [
+        {
+          "name": "[OK] Crear proyecto",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Sistema de Inventario\",\n  \"descripcion\": \"Proyecto de la materia POO\",\n  \"fechaInicio\": \"2026-10-26\",\n  \"fechaFin\": \"2026-12-15\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/proyectos", "host": ["{{baseUrl}}"], "path": ["api", "proyectos"] }
+          }
+        },
+        {
+          "name": "[OK] Listar proyectos",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/proyectos", "host": ["{{baseUrl}}"], "path": ["api", "proyectos"] }
+          }
+        },
+        {
+          "name": "[OK] Obtener proyecto por id",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/proyectos/1", "host": ["{{baseUrl}}"], "path": ["api", "proyectos", "1"] }
+          }
+        },
+        {
+          "name": "[OK] Actualizar proyecto",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Sistema de Inventario v2\",\n  \"descripcion\": \"Descripcion actualizada\",\n  \"fechaInicio\": \"2026-10-26\",\n  \"fechaFin\": \"2026-12-20\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/proyectos/1", "host": ["{{baseUrl}}"], "path": ["api", "proyectos", "1"] }
+          }
+        },
+        {
+          "name": "[OK] Tareas de un proyecto",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/proyectos/1/tareas", "host": ["{{baseUrl}}"], "path": ["api", "proyectos", "1", "tareas"] }
+          }
+        },
+        {
+          "name": "[OK] Eliminar proyecto",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/proyectos/1", "host": ["{{baseUrl}}"], "path": ["api", "proyectos", "1"] }
+          }
+        },
+        {
+          "name": "[ERROR 400] Crear proyecto sin nombre",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"\",\n  \"descripcion\": \"Sin nombre\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/proyectos", "host": ["{{baseUrl}}"], "path": ["api", "proyectos"] }
+          }
+        },
+        {
+          "name": "[ERROR 404] Obtener proyecto inexistente",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/proyectos/9999", "host": ["{{baseUrl}}"], "path": ["api", "proyectos", "9999"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tareas",
+      "item": [
+        {
+          "name": "[OK] Crear tarea",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Disenar base de datos\",\n  \"descripcion\": \"Modelo entidad-relacion\",\n  \"estado\": \"PENDIENTE\",\n  \"fechaLimite\": \"2026-11-10\",\n  \"proyectoId\": 1\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/tareas", "host": ["{{baseUrl}}"], "path": ["api", "tareas"] }
+          }
+        },
+        {
+          "name": "[OK] Listar tareas",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/tareas", "host": ["{{baseUrl}}"], "path": ["api", "tareas"] }
+          }
+        },
+        {
+          "name": "[OK] Obtener tarea por id",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/tareas/1", "host": ["{{baseUrl}}"], "path": ["api", "tareas", "1"] }
+          }
+        },
+        {
+          "name": "[OK] Actualizar tarea",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Disenar base de datos\",\n  \"descripcion\": \"Modelo entidad-relacion terminado\",\n  \"estado\": \"COMPLETADA\",\n  \"fechaLimite\": \"2026-11-10\",\n  \"proyectoId\": 1\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/tareas/1", "host": ["{{baseUrl}}"], "path": ["api", "tareas", "1"] }
+          }
+        },
+        {
+          "name": "[OK] Eliminar tarea",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/tareas/1", "host": ["{{baseUrl}}"], "path": ["api", "tareas", "1"] }
+          }
+        },
+        {
+          "name": "[ERROR 400] Crear tarea con estado invalido y sin titulo",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"\",\n  \"estado\": \"TERMINADA\",\n  \"proyectoId\": 1\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/tareas", "host": ["{{baseUrl}}"], "path": ["api", "tareas"] }
+          }
+        },
+        {
+          "name": "[ERROR 404] Crear tarea con proyecto inexistente",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Tarea huerfana\",\n  \"estado\": \"PENDIENTE\",\n  \"proyectoId\": 9999\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/tareas", "host": ["{{baseUrl}}"], "path": ["api", "tareas"] }
+          }
+        }
+      ]
+    }
+  ]
+}
